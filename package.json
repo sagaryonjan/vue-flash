@@ -1,0 +1,48 @@
+{
+  "name": "vue-flash",
+  "description": "A Vue.js 2 Helpfull Notification.",
+  "version": "1.0.0",
+  "main": "dist/vueFlash.js",
+  "authors": [
+    {
+      "name": "Sagar Yonjan",
+      "email": "sagaryonjan015@gmail.com"
+    }
+  ],
+  "private": false,
+  "scripts": {
+    "dev": "webpack",
+    "pro": "set NODE_ENV=production&&webpack",
+    "watch": "npm run dev -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "notification",
+    "flash",
+    "notify"
+  ],
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "cross-env": "^5.1",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "vue": "^2.5.7",
+    "vue-hot-reload-loader": "^0.1.3",
+    "vue-loader": "^11.3.4",
+    "webpack": "^3.8.1"
+  },
+  "dependencies": {
+    "vue-template-compiler": "^2.5.13"
+  }
+}
