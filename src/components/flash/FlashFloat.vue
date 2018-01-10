@@ -17,7 +17,7 @@
 
 <script>
 
-    import defaults from 'defaults';
+    import defaults from '../../defaults';
     import flashMixin  from  './flashMixin';
 
     export default {

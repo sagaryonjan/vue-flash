@@ -3,9 +3,9 @@ import {
     UPDATE_FAILED,
     DELETE_FAILED,
     CREATED_FAILED
-} from 'defaults/messages';
+} from '../defaults/messages';
 
-import defaults from 'defaults';
+import defaults from '../defaults';
 
 import { setNotifyMessage } from '../util/index';
 

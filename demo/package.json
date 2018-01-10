@@ -19,6 +19,7 @@
     "webpack": "^3.8.1"
   },
   "dependencies": {
-    "vue-template-compiler": "^2.5.13"
+    "vue-template-compiler": "^2.5.13",
+    "vue2-flash": "^1.0.1"
   }
 }

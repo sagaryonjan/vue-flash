@@ -1,6 +1,6 @@
 import Flash      from './components/flash/VueFlash.vue';
 import FlashFloat from './components/flash/FlashFloat.vue';
-import defaults   from 'defaults';
+import defaults   from './defaults';
 import { flash }  from './util/index';
 import { additionalAttr } from './methods';
 

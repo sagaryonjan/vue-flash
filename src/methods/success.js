@@ -5,7 +5,7 @@ import {
     SAVED
 } from '../defaults/messages';
 
-import defaults from 'defaults';
+import defaults from '../defaults';
 
 import { setNotifyMessage } from '../util/index';
 

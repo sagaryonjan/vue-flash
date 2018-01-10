@@ -2,7 +2,7 @@ import {
     WELCOME
 } from '../defaults/messages';
 
-import defaults from 'defaults';
+import defaults from '../defaults';
 
 import { setNotifyMessage } from '../util/index';
 

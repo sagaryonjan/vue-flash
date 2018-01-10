@@ -1,5 +1,5 @@
 import events   from '../../events';
-import defaults from 'defaults';
+import defaults from '../../defaults';
 import {updatedArray, groupExitInArray} from '../../util/index';
 
 export default {

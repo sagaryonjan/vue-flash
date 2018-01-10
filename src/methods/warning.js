@@ -3,7 +3,7 @@ import {
     INVALID_REQUEST,
 } from '../defaults/messages';
 
-import defaults from 'defaults';
+import defaults from '../defaults';
 import { setNotifyMessage } from '../util/index';
 
 export const accessDenied   = (data = defaults.notify_type) =>{

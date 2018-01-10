@@ -1,5 +1,5 @@
 import FlashEvent from '../events/FlashEvent';
-import defaults from  'defaults';
+import defaults from  '../defaults';
 import Vue from 'vue';
 
 export const addMethodToObj = (object, methods, bootstrap_type) => {
