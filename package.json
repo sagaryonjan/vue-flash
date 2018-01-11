@@ -1,14 +1,9 @@
 {
-  "name": "vue-flash",
+  "name": "vue2-flash",
   "description": "A Vue.js 2 Helpfull Notification.",
-  "version": "1.0.0",
-  "main": "dist/vueFlash.js",
-  "authors": [
-    {
-      "name": "Sagar Yonjan",
-      "email": "sagaryonjan015@gmail.com"
-    }
-  ],
+  "version": "1.0.3",
+  "main": "dist/vue-flash.js",
+  "author": "sagaryonjan",
   "private": false,
   "scripts": {
     "dev": "webpack",
@@ -17,10 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/sagaryonjan/vue-flash.git"
   },
   "bugs": {
-    "url": ""
+    "url": "https://github.com/sagaryonjan/vue-flash/issues"
   },
   "license": "MIT",
   "keywords": [
@@ -43,6 +38,7 @@
     "webpack": "^3.8.1"
   },
   "dependencies": {
-    "vue-template-compiler": "^2.5.13"
+    "vue-template-compiler": "^2.5.13",
+    "webpack-merge": "^4.1.1"
   }
 }

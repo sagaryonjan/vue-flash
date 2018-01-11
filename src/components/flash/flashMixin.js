@@ -27,9 +27,12 @@ export default {
         }
     },
     watch: {
-        show(val) {
-            if(val == true) {
-                 this.checkTimeOut();
+        notifications(val) {
+
+            if(this.notifications.length > 0){
+
+                this.checkTimeOut();
+
             }
         }
     },

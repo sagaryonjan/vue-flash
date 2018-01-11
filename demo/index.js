@@ -10,16 +10,24 @@ Vue.use(VueFlash,{
 new Vue({
     el: '#app',
     data: {
-        title: 'Hello World'
+        title: 'Hello World',
+        area: 'top-right',
+        select_area: 'top-right',
+        animation: 'fade',
+        select_animation: 'fade',
+        input_duration: 4000,
+        duration: 4000,
+        component: 'float-notification',
+        notification_type: 'success',
+        message: 'User Get Successfully'
     },
     methods: {
         addNotify() {
+            this.area      = this.select_area;
+            this.animation = this.select_animation;
+            this.duration  = this.input_duration;
 
-            this.$flash.success.created({
-                group: 'notify',
-                title: 'User'
-            });
-
+            this.$flash.notify(this.notification_type, this.message ,this.component);
         }
     }
-})
+});

@@ -1,6 +1,9 @@
 # Vue2 Flash 
 A Vue2 Flash Helpful Notification.
 
+#Demo
+http://vueflash.sagaryonjan.com.np/
+
 # Install
 ``` bash
 npm install vue2-flash
@@ -16,13 +19,12 @@ Vue.use(VueFlash);
 
 now you can simply call this
 ``` bash
-this.$flash.success.created(); //this will render message Data Created Successfully.
-```
+this.$flash.success.created(); //message: Data Created Successfully.
 
-and add this component where ever you want to display.
-``` bash  
- <flash-float></flash-float> // this will display in top right area
- <flash></flash> // this is normal like bootstrap alert
+this.$flash.success.created({
+  title : 'User',
+  group: 'user-group' // group must be called in component to render
+ });  
 ```
 
 and add this component where ever you want to display.
@@ -33,7 +35,7 @@ and add this component where ever you want to display.
 
 you can also normally call
 ``` bash
-    this.$flash.notify(type, message, group = defaults.notify_group ); 
+    this.$flash.notify(type, message, group); 
    //type: success,
    //message: 'Data Created Successfully',
    //group: 'user-create'
@@ -52,7 +54,7 @@ All props are optional.
 | group     | String  | 'sy-vue-notify' | group name for component which will be render when called |
 | duration  | Number  | 4000            | Component will hide after  4000|
 | classes   | String  | 'sy-vue-notify' | Add you class |
-| animation | String  | 'top-right'     | animation type: fade,slide |
+| animation | String  | ''     | animation type: fade,slide |
 
 In <flash-float></flash-float> there is addition component
 ``` bash
@@ -103,11 +105,63 @@ In <flash-float></flash-float> there is addition component
  Vue.use(VueFlash, options);
  
  // now you can call
- this.$flash.warning.accessDenied();
- 
+ this.$flash.warning.unauthorized();
+ ```
+
+You can also use push function. It is going to push the data and set default value. So when you
+are working with spa and you want to send alert notification into another route in another 
+component than you can use push which is going to set the default value.
+``` bash
+this.$flash.push(type, message, group); 
  ```
  
+ you can also push in :
+
+``` bash
+this.$flash.success.created('push'); 
+this.$flash.success.saved('push'); 
+this.$flash.success.updated('push'); 
+ ``` 
  
+ When you use created function than it is going to send 
+
+``` bash
+message: Data Created Successfully. 
+ ```   
+
+ So if you want to update that data into User 
+ than you can call 
+
+``` bash
+this.$flash.success.created('User');  
+ ```   
+ 
+ If you also want to push than 
+ ``` bash
+ this.$flash.success.created({
+  type : 'push'
+  title : 'User',
+  group: 'user-group' // group must be called in component to render
+ });  
+ 
+ addtional attribute
+ You can also updated the message using message property. 
+  ```   
+  
+  #Browser
+  Include the script file, then install the component with Vue.use(VueFlash); e.g.:
+  ``` bash
+  <script type="text/javascript" src="node_modules/vuejs/dist/vue.min.js"></script>
+  <script type="text/javascript" src="node_modules/vue-clock-simple/dist/vue-flash.min.js"></script>
+  <script type="text/javascript">
+    Vue.use(VueFlash);
+  </script>
+  ```   
+  #Module
+  ``` bash
+  import VueFlash from 'vue-flash';
+  ```
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

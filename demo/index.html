@@ -3,23 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
 </head>
 <body>
+
 <div id="app">
-    <div>
-        <flash-float
-                :duration="4000"
-                :group="'notify'"
-                :animation="'slide'"
-                :area="'top-left'"></flash-float>
-        <flash></flash>
-        {{ title}}
 
-    <button @click="addNotify">
-        Add Notify
-    </button>
+    <flash-float
+            :duration="duration"
+            :group="'float-notification'"
+            :animation="animation"
+            :area="area"></flash-float>
 
-    </div>
+    <main role="main" class="container">
+        <br/>
+        <h1 class="text-center">Vue Flash Notification</h1>
+        <p class="text-center">
+            <a target="_blank" href="https://github.com/sagaryonjan/vue-flash">GitHub Link</a>  <strong>|| </strong>
+            <a target="_blank" href="https://github.com/sagaryonjan/vue-flash/issues">GitHub Issue</a> <strong>|| </strong>
+            <a target="_blank" href="http://www.intactcode.com/">Intact Code</a><strong>|| </strong>
+            <a target="_blank" href="https://www.youtube.com/channel/UCeU7kaoccHpE5D5yuev4MtA">Intact Code Youtube</a>
+            <!--<a target="_blank" href="http://www.intactcode.com/">Intact Code</a>-->
+        </p>
+        <hr />
+        <br />
+        <flash
+                :group="'normal-notification'"
+                :duration="duration"
+                :animation="animation"
+        ></flash>
+
+        <div class="row">
+
+            <div class="col-lg-2"></div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>Select Component</label>
+                    <select v-model="component" class="form-control">
+                        <option value="float-notification">Float Notification</option>
+                        <option value="normal-notification">Normal Notification</option>
+                    </select>
+                </div>
+                <div v-if="component == 'float-notification'" class="form-group">
+                    <label>Select Notify Area</label>
+                    <select v-model="select_area" class="form-control">
+                        <option value="top-right">Top Right</option>
+                        <option value="middle-right">Middle Right</option>
+                        <option value="down-right">Down Right</option>
+
+                        <option value="top-middle">Top Middle</option>
+                        <option value="middle">Middle</option>
+                        <option value="down-middle">Down Middle</option>
+
+                        <option value="top-left">Top Left</option>
+                        <option value="middle-left">Middle Left</option>
+                        <option value="down-left">Down Left</option>
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Notification Type</label>
+                    <select v-model="notification_type" class="form-control">
+                        <option value="success">Success</option>
+                        <option value="warning">Warning</option>
+                        <option value="info">Info</option>
+                        <option value="danger">Danger</option>
+                    </select>
+                </div>
+
+
+            </div>
+            <div class="col-lg-4">
+
+                <div class="form-group">
+                    <label>Animation</label>
+                    <select v-model="select_animation" class="form-control">
+                        <option value="fade">Fade</option>
+                        <option value="slide">Slide</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Duration</label>
+                    <input type="text" class="form-control" v-model="input_duration">
+                </div>
+
+                <div class="form-group">
+                    <label>Message</label>
+                    <input type="text" class="form-control" v-model="message">
+                </div>
+
+                <div>
+                    <button @click="addNotify">
+                        Add Notify
+                    </button>
+
+                </div>
+
+            </div>
+            <div class="col-lg-2">
+
+            </div>
+
+        </div>
+        <hr />
+        <br />
+        <br />
+
+    </main><!-- /.container -->
 
 </div >
 
