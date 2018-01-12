@@ -161,6 +161,12 @@ this.$flash.success.created('User');
   ``` bash
   import VueFlash from 'vue-flash';
   ```
+  
+  You can test it in development with: 
+  # Run tests
+  ``` bash
+  npm run test
+```
 
 ## License
 

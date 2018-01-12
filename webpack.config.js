@@ -1,7 +1,7 @@
 let webpack = require('webpack');
 let path = require('path');
 let ExtractTextPlugin = require("extract-text-webpack-plugin");
-let isProduction = (process.env.NODE_ENV == 'production');
+let isTest = (process.env.NODE_ENV == 'test');
 const merge = require('webpack-merge');
 
 let config = {
@@ -41,9 +41,7 @@ let config = {
 
         new ExtractTextPlugin('[name].css'),
 
-        new webpack.LoaderOptionsPlugin({
-            minimize: isProduction,
-        }),
+        new webpack.LoaderOptionsPlugin(),
 
         new webpack.optimize.UglifyJsPlugin({
             sourcemap: true,
@@ -55,16 +53,32 @@ let config = {
     ],
 };
 
-module.exports = [
-    merge(config, {
-        entry: path.resolve(__dirname + '/src/index.js'),
-        output: {
-            filename: 'vue-flash.min.js',
-            libraryTarget: 'window',
-            library: 'VueFlash',
-        }
-    }),
-    merge(config, {
+if(!isTest) {
+
+    module.exports = [
+        merge(config, {
+            entry: path.resolve(__dirname + '/src/index.js'),
+            output: {
+                filename: 'vue-flash.min.js',
+                libraryTarget: 'window',
+                library: 'VueFlash',
+            }
+        }),
+        merge(config, {
+            entry: path.resolve(__dirname + '/src/index.js'),
+            output: {
+                filename: 'vue-flash.js',
+                libraryTarget: 'umd',
+                library: 'vue-flash',
+                umdNamedDefine: true
+            }
+        })
+    ];
+
+} else  {
+
+
+    module.exports = merge(config, {
         entry: path.resolve(__dirname + '/src/index.js'),
         output: {
             filename: 'vue-flash.js',
@@ -72,5 +86,6 @@ module.exports = [
             library: 'vue-flash',
             umdNamedDefine: true
         }
-    })
-];
+    });
+
+}

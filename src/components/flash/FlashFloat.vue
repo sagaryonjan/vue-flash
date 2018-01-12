@@ -10,7 +10,9 @@
                @click="remove(index)"
             >×</a>
            <strong>{{ notify.type | capitalize }}!!</strong>
-            {{ notify.message }}
+            <div class="notify-message">
+                {{ notify.message }}
+            </div>
         </div>
     </transition>
 </template>

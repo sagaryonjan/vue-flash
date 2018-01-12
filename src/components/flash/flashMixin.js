@@ -26,16 +26,6 @@ export default {
             default: defaults.notify_group
         }
     },
-    watch: {
-        notifications(val) {
-
-            if(this.notifications.length > 0){
-
-                this.checkTimeOut();
-
-            }
-        }
-    },
     filters: {
         capitalize: function (value) {
             if (!value) return '';
@@ -45,18 +35,33 @@ export default {
     },
     created() {
         this.checkTimeOut();
-        this.eventNotifyMessage();
+        events.$on('notifyMessage', this.eventNotifyMessage);
     },
     methods: {
         checkTimeOut() {
-            setTimeout(() => this.remove(groupExitInArray(this.notifications, this.group)), this.duration);
-        },
-        eventNotifyMessage() {
-            events.$on('notifyMessage', (data) => {
-                if(!updatedArray(this.notifications, data)) {
-                    this.notifications.push(data);
+            if(this.notifications.length > 0) {
+
+                if (this.duration >= 0) {
+
+                   let timer = setTimeout(() => {
+
+                        this.remove(groupExitInArray(this.notifications, this.group))
+
+                       clearTimeout(timer)
+
+                    }, this.duration);
+
                 }
-            });
+            }
+        },
+        eventNotifyMessage(data) {
+
+            if(!updatedArray(this.notifications, data)) {
+                this.notifications.push(data);
+            }
+
+            this.checkTimeOut();
+
         },
         remove(index) {
             this.notifications.splice(index, 1);

@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import VueFlash from 'vue2-flash';
+import VueFlash from '../src/index';
 
 Vue.use(VueFlash,{
     success: {

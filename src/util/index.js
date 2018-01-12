@@ -2,7 +2,13 @@ import FlashEvent from '../events/FlashEvent';
 import defaults from  '../defaults';
 import Vue from 'vue';
 
-export const addMethodToObj = (object, methods, bootstrap_type) => {
+/**
+ * Add Method to object...
+ * @param object
+ * @param methods
+ * @param bootstrap_type
+ */
+export const addMethodToObj = (object, methods, bootstrap_type = 'success') => {
 
     for (var name in methods) {
         object[name] =  (data) => setNotifyMessage(data, bootstrap_type, methods[name]);

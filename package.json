@@ -8,7 +8,9 @@
   "scripts": {
     "dev": "webpack",
     "pro": "set NODE_ENV=production&&webpack",
-    "watch": "npm run dev -- --watch"
+    "watch": "npm run dev -- --watch",
+    "test": "set NODE_ENV=test&&mocha-webpack --webpack-config webpack.config.js --require test/setup.js test/**/**/*.spec.js",
+    "watch:test": "set NODE_ENV=test&&mocha-webpack --webpack-config webpack.config.js --watch --require test/setup.js test/**/**/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -31,13 +33,20 @@
     "babel-preset-es2015": "^6.24.1",
     "cross-env": "^5.1",
     "css-loader": "^0.28.7",
+    "expect": "^22.0.6",
     "extract-text-webpack-plugin": "^3.0.2",
+    "jsdom": "^11.5.1",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^4.1.0",
+    "mocha-webpack": "^1.0.1",
     "vue": "^2.5.7",
     "vue-hot-reload-loader": "^0.1.3",
     "vue-loader": "^11.3.4",
+    "vue-test-utils": "^1.0.0-beta.11",
     "webpack": "^3.8.1"
   },
   "dependencies": {
+    "sinon": "^4.1.4",
     "vue-template-compiler": "^2.5.13",
     "webpack-merge": "^4.1.1"
   }
