@@ -6,7 +6,6 @@ import {
     addNotificationWithCorrectData
 } from './index';
 
-
 /**
  * Vue Flash It Test both vue-flash and flash-float component
  */

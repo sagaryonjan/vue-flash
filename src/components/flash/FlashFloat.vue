@@ -38,7 +38,7 @@
 <style scoped>
 
     .sy-vue-notify--top-right {
-        position: absolute;
+        position: fixed;
         top: 10px;
         background: #eee;
         box-shadow: 0 0 6px 0 #999;
@@ -50,7 +50,7 @@
     }
 
     .sy-vue-notify--middle-right {
-        position: absolute;
+        position: fixed;
         top: 275px;
         box-shadow: 0 0 6px 0 #999;
         right: 20px;
@@ -61,8 +61,8 @@
     }
 
     .sy-vue-notify--down-right {
-        position: absolute;
-        top: 570px;
+        position: fixed;
+        top: 555px;
         box-shadow: 0 0 6px 0 #999;
         right: 20px;
         border-radius: 3px;
@@ -73,7 +73,7 @@
 
     /* Middle top*/
     .sy-vue-notify--top-middle {
-        position: absolute;
+        position: fixed;
         top: 10px;
         right: 525px;
         left: 525px;
@@ -86,7 +86,7 @@
     }
 
     .sy-vue-notify--middle {
-        position: absolute;
+        position: fixed;
         top: 275px;
         right: 525px;
         left: 525px;
@@ -98,8 +98,8 @@
     }
 
     .sy-vue-notify--down-middle {
-        position: absolute;
-        top: 570px;
+        position: fixed;
+        top: 555px;
         box-shadow: 0 0 6px 0 #999;
         right: 525px;
         left: 525px;
@@ -111,7 +111,7 @@
 
     /*left*/
     .sy-vue-notify--top-left {
-        position: absolute;
+        position: fixed;
         top: 10px;
         background: #eee;
         box-shadow: 0 0 6px 0 #999;
@@ -123,7 +123,7 @@
     }
 
     .sy-vue-notify--middle-left {
-        position: absolute;
+        position: fixed;
         top: 275px;
         box-shadow: 0 0 6px 0 #999;
         left: 10px;
@@ -134,8 +134,8 @@
     }
 
     .sy-vue-notify--down-left {
-        position: absolute;
-        top: 570px;
+        position: fixed;
+        top: 555px;
         box-shadow: 0 0 6px 0 #999;
         left: 10px;
         border-radius: 3px;
