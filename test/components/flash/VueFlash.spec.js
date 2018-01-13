@@ -1,30 +1,13 @@
-import {
-    checkDefaultProps,
-    removeNotifyOnClick,
-    checkDefaultData,
-    removeNotificationAfterCertainDuration,
-    addNotificationWithCorrectData
-} from './index';
+import { shallow } from '@vue/test-utils';
+import VueFlash from '../../../src/components/flash/VueFlash.vue';
 
-/**
- * Vue Flash It Test both vue-flash and flash-float component
- */
-describe('VueFlash', () => {
-
-    describe('set default value', () => {
-
-        it('check the default props are correct', () => checkDefaultProps() );
-
-        it('check notifications list is empty array', () => checkDefaultData() );
+describe('VueFlash.spec.js', () => {
+    let cmp;
+    beforeEach(() => {
+        cmp = shallow(VueFlash);
     });
 
-    describe('check methods', () => {
-        it('remove notification on click in remove', () => removeNotifyOnClick());
-
-        it('remove notification after certain duration', () => removeNotificationAfterCertainDuration());
-
-        it('adds notification item with correct data', (done) => addNotificationWithCorrectData(done));
-
+    it('is the VueFlash component', () => {
+        expect(cmp.isVueInstance()).toBe(true);
     });
-
 });
