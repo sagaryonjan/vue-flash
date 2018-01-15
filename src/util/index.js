@@ -2,23 +2,47 @@ import FlashEvent from '../events/FlashEvent';
 import defaults from  '../defaults';
 import Vue from 'vue';
 
-/**
- * Add Method to object...
- * @param object
- * @param methods
- * @param bootstrap_type
- */
-export const addMethodToObj = (object, methods, bootstrap_type = 'success') => {
 
-    for (var name in methods) {
-        object[name] =  (data) => setNotifyMessage(data, bootstrap_type, methods[name]);
+/**
+ * Check if the object has property
+ * @param object
+ * @param prop
+ * @returns {boolean}
+ */
+export const hasProp = (object, prop) => {
+
+    if(object.hasOwnProperty(prop)) {
+        return true;
+    } else {
+        return false;
     }
 
 };
 
-export const hasProp = (object, prop) => {
 
-    if(object.hasOwnProperty(prop)) {
+/**
+ * Check if the val is null
+ * @param val
+ * @returns {boolean}
+ */
+export const isNull = (val) => {
+
+    if(val == null) {
+        return true;
+    } else {
+        return false;
+    }
+
+};
+
+/**
+ * Check if the val is not null
+ * @param val
+ * @returns {boolean}
+ */
+export const isNotNull = (val) => {
+
+    if(val != null) {
         return true;
     } else {
         return false;
@@ -46,9 +70,54 @@ export const isStr = (string) => {
 
 };
 
+export const isAry = (ary) => {
+
+    if(Array.isArray(ary))
+        return true;
+    else
+        return false;
+};
+
+/**
+ * Get Value inside curly brackets
+ * @param value
+ * @returns {string}
+ */
+export const getValInsideCurl =  (value) => {
+
+    let message_replace = value.match(/{([^}]+)}/);
+
+    if(message_replace) {
+        return message_replace[1];
+    } else {
+        return 'no-string';
+    }
+};
+
+/**
+ * Get Message replacing the title..
+ * @param message
+ * @param title
+ */
+export const getMessage = (message, title) => {
+
+    let msg = message;
+
+    let value_replace = getValInsideCurl(msg);
+
+    if(value_replace != 'no-string') {
+        msg = msg.replace('{'+value_replace+'}', title);
+    }
+
+    return msg;
+
+};
+
+
+
 export const flash = (notify) => {
 
-    if(notify.notify == 'push') {
+    if(notify.notify_type == 'push') {
 
         if(!updatedArray(defaults.notifications, notify) ) {
             defaults.notifications.push(notify)
@@ -88,87 +157,5 @@ export const groupExitInArray = (array, group) => {
     });
 
     return index;
-
-};
-
-export const updateProps = (options) => {
-
-    if(hasProp(options, 'props_default')) {
-
-        if(hasProp(options.prop_default, 'duration')) {
-            defaults.props_default.duration = options.props_default.duration;
-        }
-        if(hasProp(options.prop_default, 'classes')) {
-            defaults.props_default.classes = options.props_default.classes;
-        }
-        if(hasProp(options.prop_default, 'animation')) {
-            defaults.props_default.animation = options.props_default.animation;
-        }
-
-    }
-};
-
-export const checkDataForNotify = (data, message_type) => {
-    let notify_types = ['flash', 'push'];
-    let title = 'Data';
-    let type = 'flash';
-    let group = defaults.notify_group;
-    let message;
-
-    if( isObj( data ) ) {
-
-        if(hasProp(data, 'type')) {
-             type = data.type
-        }
-
-        if(hasProp(data, 'title')) {
-             title = data.title
-        }
-
-        if(hasProp(data, 'group')) {
-             group = data.group
-        }
-
-        if(hasProp(data, 'message')) {
-             message = data.message
-        }
-
-    }
-
-    if( isStr(data) ) {
-
-        if (notify_types.includes(data)) {
-             type = data;
-        } else {
-             title = data;
-        }
-    }
-
-    if(!message) {
-        let message_replace = message_type.match(/{([^}]+)}/);
-        if(message_replace) {
-            message = message_type.replace('{'+message_replace[1]+'}', title);
-        } else {
-            message = message_type;
-        }
-    }
-
-    return {
-        type,
-        group,
-        message
-    }
-};
-
-export const setNotifyMessage = (data, bootstrap_type, message_type) => {
-
-    let flash_data = checkDataForNotify(data, message_type);
-
-    flash({
-        notify  : flash_data.type,
-        type    : bootstrap_type ,
-        message : flash_data.message,
-        group   : flash_data.group,
-    });
 
 };

@@ -1,6 +1,6 @@
-import events   from '../../events';
-import defaults from '../../defaults';
-import {updatedArray, groupExitInArray} from '../../util/index';
+import events   from '../events';
+import defaults from '../defaults';
+import {updatedArray, groupExitInArray} from '../util/index';
 
 export default {
     data() {
@@ -34,18 +34,21 @@ export default {
         }
     },
     created() {
+
         this.checkTimeOut();
+
         events.$on('notifyMessage', this.eventNotifyMessage);
     },
     methods: {
         checkTimeOut() {
+
             if(this.notifications.length > 0) {
 
                 if (this.duration >= 0) {
 
                    let timer = setTimeout(() => {
 
-                        this.remove(groupExitInArray(this.notifications, this.group))
+                       this.remove(groupExitInArray(this.notifications, this.group));
 
                        clearTimeout(timer)
 

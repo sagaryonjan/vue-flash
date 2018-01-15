@@ -1,0 +1,9 @@
+this.$flash.success().created();
+
+this.$flash.notify(type, {
+
+})
+
+this.$flash.push(type, {
+
+})

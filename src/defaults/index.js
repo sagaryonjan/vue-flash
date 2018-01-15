@@ -3,8 +3,8 @@ export default {
     notify_group: 'sy-vue-notify',
     notify_type: 'flash',
     message_type: {
-        info: 'info',
-        danger: 'danger',
+        info:    'info',
+        danger:  'danger',
         success: 'success',
         warning: 'warning'
     },
@@ -15,4 +15,10 @@ export default {
         area: 'top-right',
         float: ''
     },
+    type : {
+        info : '',
+        danger : '',
+        warning : '',
+        success : '',
+    }
 }

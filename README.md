@@ -19,6 +19,14 @@ Vue.use(VueFlash);
 
 now you can simply call this
 ``` bash
+Version: 1.0.4 
+this.$flash.success().created(); 
+this.$flash.success().created({
+   title : 'User',
+  group: 'user-group' // group must be called in component to render
+}); 
+
+Verstion : 1.0.3
 this.$flash.success.created(); //message: Data Created Successfully.
 
 this.$flash.success.created({
@@ -33,8 +41,54 @@ and add this component where ever you want to display.
  <flash></flash> // this is normal like bootstrap alert
 ```
 
+
+New Feature :
+``` bash  
+ this.$flash.success({
+     group: this.component,
+     message: this.message,
+     notify_type: 'push'
+ });
+
+ this.$flash.success('User Created Successfully');
+ 
+ this.$flash.warning({
+     group: 'group',
+     message: 'User Warning !!',
+     notify_type: 'push'
+ });
+
+ this.$flash.warning('User Warning !!');
+ 
+ this.$flash.danger({
+     group: 'group',
+     message: 'User Danger !!',
+     notify_type: 'push'
+ });
+
+ this.$flash.danger('User Danger');
+ 
+  this.$flash.info({
+      group: 'group',
+      message: 'User Info !!',
+      notify_type: 'push'
+  });
+ 
+  this.$flash.danger('User Info');
+```
+
 you can also normally call
 ``` bash
+    Verstion : 1.0.4
+    this.$flash.notify('success', {
+        group: 'group-name',
+        message: 'User Created Successfully',
+        notify_type: 'push'
+    });
+    
+    this.$flash.notify('success', 'User Created Successfully');
+    
+    Verstion : 1.0.3
     this.$flash.notify(type, message, group); 
    //type: success,
    //message: 'Data Created Successfully',
@@ -69,6 +123,24 @@ In <flash-float></flash-float> there is addition component
  
  Additional Functionality 
  ``` bash
+ Verstion : 1.0.4
+ #Success 
+  1.this.$flash.success().created();
+  2.this.$flash.success().saved();
+  3.this.$flash.success().updated();
+  4.this.$flash.success().deleted();
+  
+  #Warning
+  1.this.$flash.warning().accessDenied();
+  2.this.$flash.warning().invalidRequest();
+  
+  #Danger
+  1.this.$flash.danger().createdFailed();
+  2.this.$flash.danger().savedFailed();
+  3.this.$flash.danger().updatedFailed();
+  4.this.$flash.danger().deletedFailed();
+ 
+ Verstion : 1.0.3
  #Success 
  1.this.$flash.success.created();
  2.this.$flash.success.saved();
@@ -94,6 +166,22 @@ In <flash-float></flash-float> there is addition component
  which you will use many time as your app grow. Let assume you want to notify
   if some one is not authorized than :
 ``` bash
+Verstion : 1.0.4
+Vue.use(VueFlash, {
+    predefine_msg: {
+        unauthorized : {
+            message: 'You are not authorized',
+            type: 'warning'
+        }
+    }
+});
+
+this.$flash.warning().unauthorized();
+
+you can add warning,info,danger,success
+
+
+Version : 1.0.3
  let options =  {
                 warning: {
                     'unauthorized' : "You are not authorized"
@@ -112,12 +200,28 @@ You can also use push function. It is going to push the data and set default val
 are working with spa and you want to send alert notification into another route in another 
 component than you can use push which is going to set the default value.
 ``` bash
+VERSION: 1.0.4
+/*this.$flash.push('success', {
+    group: 'group',
+    message: 'Hello Message',
+});*/
+
+//Feature 4
+//this.$flash.push('success', 'Hello Success Message');
+
+VERSION: 1.0.3
 this.$flash.push(type, message, group); 
  ```
  
  you can also push in :
 
 ``` bash
+VERSION: 1.0.4
+this.$flash.success().created('push'); 
+this.$flash.success().saved('push'); 
+this.$flash.success().updated('push'); 
+
+VERSION: 1.0.3
 this.$flash.success.created('push'); 
 this.$flash.success.saved('push'); 
 this.$flash.success.updated('push'); 
@@ -133,11 +237,24 @@ message: Data Created Successfully.
  than you can call 
 
 ``` bash
+VERSION: 1.0.4
+this.$flash.success().created('User');  
+
+VERSION: 1.0.3
 this.$flash.success.created('User');  
  ```   
  
  If you also want to push than 
  ``` bash
+ 
+ VERSION: 1.0.4
+ this.$flash.success().created({
+   type : 'push'
+   title : 'User',
+   group: 'user-group' // group must be called in component to render
+  });
+ 
+ VERSION: 1.0.3
  this.$flash.success.created({
   type : 'push'
   title : 'User',

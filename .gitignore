@@ -1,6 +1,4 @@
-.idea
-node_modules/
-npm-debug.log
-yarn-error.log
-demo/dist
-test/unit/coverage
+/.idea
+/node_modules/
+/demo/node_modules/
+/demo/.idea

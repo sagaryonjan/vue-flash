@@ -53,7 +53,20 @@ let config = {
     ],
 };
 
-if(!isTest) {
+if(isTest) {
+
+    module.exports = merge(config, {
+        entry: path.resolve(__dirname + '/src/index.js'),
+        output: {
+            filename: 'vue-flash.js',
+            libraryTarget: 'umd',
+            library: 'vue-flash',
+            umdNamedDefine: true
+        }
+    });
+
+} else  {
+
 
     module.exports = [
         merge(config, {
@@ -75,17 +88,6 @@ if(!isTest) {
         })
     ];
 
-} else  {
 
-
-    module.exports = merge(config, {
-        entry: path.resolve(__dirname + '/src/index.js'),
-        output: {
-            filename: 'vue-flash.js',
-            libraryTarget: 'umd',
-            library: 'vue-flash',
-            umdNamedDefine: true
-        }
-    });
 
 }

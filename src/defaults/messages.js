@@ -1,30 +1,43 @@
-/**
- * Info Message
- * @type {string}
- */
-export const WELCOME         = 'Welcome to our {data}';
+export default  {
+    created : {
+        message : '{data} Created Successfully',
+        type: [ 'success', 'warning' ]
+    },
+    updated: {
+        message : '{data} Updated Successfully',
+        type: 'success'
+    },
+    deleted: {
+        message : '{data} Deleted Successfully',
+        type: 'success'
+    },
+    saved: {
+        message : '{data} Saved Successfully',
+        type: 'success'
+    },
+    create_failed : {
+        message : 'Sorry, {data} is not created!!',
+            type: [ 'danger', 'warning' ]
+    },
+    update_failed: {
+        message : 'Sorry, {data} is not updated!!',
+        type    : 'danger'
+    },
+    delete_failed: {
+        message : 'Sorry, {data} couldn\'t be deleted!!.',
+        type    : 'danger'
+    },
+    saved_failed: {
+        message : 'Sorry, {data} is not saved!!',
+        type    : 'danger'
+    },
+    access_denied: {
+        message : 'Access Denied!, TryAgain.',
+        type    : 'warning'
+    },
+    invalid_request: {
+        message : 'Sorry, Your request was invalid!!.',
+        type    : 'warning'
+    }
+};
 
-/**
- * Success Message
- * @type {string}
- */
-export const CREATED         = '{data} Created Successfully';
-export const UPDATED         = '{data} Updated Successfully';
-export const DELETED         = '{data} Deleted Successfully';
-export const SAVED           = '{data} Saved Successfully';
-
-/**
- * Danger Message
- * @type {string}
- */
-export const CREATED_FAILED  = 'Sorry, {data} is not created!!';
-export const SAVE_FAILED     = 'Sorry, {data} is not saved!!';
-export const UPDATE_FAILED   = 'Sorry, {data} is not updated!!';
-export const DELETE_FAILED   = 'Sorry, {data} couldn\'t be deleted!!.';
-
-/**
- * Warning Message
- * @type {string}
- */
-export const ACCESS_DENIED   = 'Access Denied!, TryAgain';
-export const INVALID_REQUEST = 'Sorry, Your request was invalid!!.';
