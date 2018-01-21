@@ -1,11 +1,15 @@
 import Vue from 'vue';
-import VueFlash from 'vue2-flash';
+import VueFlash from '../src/index';
 
 Vue.use(VueFlash, {
     predefine_msg: {
         warner : {
             message: 'You Warner {data}',
             type: 'warning'
+        },
+        tackel : {
+            message: 'You Warner {data}',
+            type: ['warning']
         }
     },
     type: {
@@ -39,11 +43,19 @@ new Vue({
             this.animation = this.select_animation;
             this.duration  = this.input_duration;
 
+            this.$flash.warning().tackel({
+                title: 'Manager'
+            });
+
+            /*this.$flash.success().created({
+                title: 'Manager',
+                notify_type: 'trash'
+            });*/
             //Feature 1
-            this.$flash.notify('success', {
+            /*this.$flash.notify('success', {
                 group: this.component,
                 message: this.message
-            });
+            });*/
 
             //Feature 2
             //this.$flash.notify('success', 'User Created Successfully');

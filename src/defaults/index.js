@@ -1,7 +1,9 @@
 export default {
+    title: 'Data',
     notifications:[],
     notify_group: 'sy-vue-notify',
     notify_type: 'flash',
+    notify_response: ['push', 'flash'],
     message_type: {
         info:    'info',
         danger:  'danger',

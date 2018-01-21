@@ -1,11 +1,14 @@
 import VueFlash from './VueFlash';
 import defaults from '../defaults';
+import MethodNotAvailableError from '../errors/MethodNotAvailableError';
+import StringOrArray from '../errors/StringOrArray';
+import {MESSAGE_TYPE_STRING_OR_ARRAY, MESSAGE_TYPE_INCLUDE} from '../defaults/errors';
+
 import {hasProp, isStr, isAry, getMessage, isObj} from '../util/index';
 
 /**
  * Get Custom Default Notify message
  */
-
 export default class CustomNotify {
 
     constructor(notify) {
@@ -21,45 +24,52 @@ export default class CustomNotify {
 
     get(method, data, param) {
 
-        if(hasProp(data, 'type')) {
+        try {
 
-            if(isStr(data.type)) {
+            if(hasProp(data, 'type')) {
 
-                if(this.notify.type == data.type) {
+                if(isStr(data.type)) {
 
-                    this.updateNotifyMsg(data , param);
-                } else {
-                    throw new Error(method+ ": method is not available in "+this.notify.type+ " type. Its type is : " + data.type );
+                    if(this.notify.type == data.type) {
+
+                        this.updateNotifyMsg(data , param);
+
+                    } else {
+                        throw new MethodNotAvailableError(method, this.notify.type, data.type);
+                    }
+
+                }
+                else if(isAry(data.type)) {
+
+                    if(data.type.includes(this.notify.type)) {
+
+                        this.updateNotifyMsg(data, param);
+                    } else {
+                        throw new MethodNotAvailableError(method, this.notify.type, data.type.join());
+                    }
+
+                }
+                else {
+                    throw new StringOrArray('MESSAGE_TYPE_STRING_OR_ARRAY_ERROR', MESSAGE_TYPE_STRING_OR_ARRAY)
                 }
 
-            }
-            else if(isAry(data.type)) {
-
-                if(data.type.includes(this.notify.type)) {
-
-                    this.updateNotifyMsg(data, param);
-                } else {
-                    throw new Error(method+ ": method is not available in "+this.notify.type+ " type. Its type is :" + data.type.join()  );
-                }
-
-            }
-            else {
-                throw new Error("Make Sure Your Pre define message type must be String or Array.");
+            } else {
+                throw new StringOrArray('INCLUDE_MESSAGE_TYPE_ERROR', MESSAGE_TYPE_INCLUDE)
             }
 
-        } else {
-            throw new Error("Must include type for your pre define message.Type must be (String or Array).");
+        } catch (e) {
+            console.log(e.name + ': ' + e.message);
         }
 
     };
 
     updateNotifyMsg(data, param) {
 
-        this.message = getMessage(data.message, 'Data');
+        this.message = getMessage(data.message, defaults.title);
 
         if(isStr(param)) {
 
-            if(['push', 'flash'].includes(param)) {
+            if(defaults.notify_response.includes(param)) {
 
                 this.notify_type = param;
 

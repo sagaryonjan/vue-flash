@@ -114,7 +114,6 @@ export const getMessage = (message, title) => {
 };
 
 
-
 export const flash = (notify) => {
 
     if(notify.notify_type == 'push') {
