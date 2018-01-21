@@ -10,13 +10,7 @@
               title="close"
               @click="remove(index)"
            >×</a>
-           <strong>{{ notify.type | capitalize }} !</strong>
-
-           <div class="notify-message">
-               {{ notify.message }}
-           </div>
-
-
+           <strong>{{ notify.type | capitalize }} !</strong>{{ notify.message }}
        </div>
     </transition>
 </template>

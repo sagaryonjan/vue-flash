@@ -23,7 +23,7 @@ describe('VueFlash', () => {
 
         it('remove notification after certain duration', () => removeNotificationAfterCertainDuration());
 
-        it('adds notification item with correct data', (done) => addNotificationWithCorrectData(done));
+        //it('adds notification item with correct data', (done) => addNotificationWithCorrectData(done));
 
     });
 

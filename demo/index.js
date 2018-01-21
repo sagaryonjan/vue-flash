@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import VueFlash from '../src/index';
+import VueFlash from 'vue2-flash';
 
 Vue.use(VueFlash, {
     predefine_msg: {
@@ -18,8 +18,6 @@ Vue.use(VueFlash, {
     }
 
 });
-
-import defaults from '../src/defaults/index';
 
 new Vue({
     el: '#app',
@@ -42,11 +40,10 @@ new Vue({
             this.duration  = this.input_duration;
 
             //Feature 1
-            /*this.$flash.notify('success', {
+            this.$flash.notify('success', {
                 group: this.component,
-                message: this.message,
-                notify_type: 'push'
-            });*/
+                message: this.message
+            });
 
             //Feature 2
             //this.$flash.notify('success', 'User Created Successfully');

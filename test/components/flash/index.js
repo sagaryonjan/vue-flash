@@ -1,6 +1,6 @@
 import  { mount } from 'vue-test-utils';
-import VueFlash from '../../../src/components/flash/VueFlash.vue';
-import FlashFloat from '../../../src/components/flash/FlashFloat.vue';
+import VueFlash from '../../../src/components/VueFlash.vue';
+import FlashFloat from '../../../src/components/FlashFloat.vue';
 import expect from 'expect';
 import {
     checkNotificationProps,
