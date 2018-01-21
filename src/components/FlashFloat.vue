@@ -3,13 +3,16 @@
         <div v-if="group == notify.group"
              v-for="(notify, index) in notifications"
              :class="classes +' sy-vue-notify--'+notify.type + ' sy-vue-notify--'+area"
+             :style="upDateStyle(notify.type)"
              class="sy-vue-notify--alert">
             <a href="#"
                class="close"
                title="close"
                @click="remove(index)"
             >×</a>
-           <strong>{{ notify.type | capitalize }}!!</strong>{{ notify.message }}
+            <strong v-if="title == true">{{ notify.type | capitalize }} !!</strong>
+            <strong v-if="typeof title === 'string'">{{ title | capitalize }}</strong>
+            {{ notify.message }}
         </div>
     </transition>
 </template>
@@ -28,6 +31,19 @@
                 default: defaults.props_default.area
             }
         },
+        methods: {
+            upDateStyle(type) {
+                for (const [bootstrap_type, styles] of Object.entries(defaults.type)) {
+
+                    if (type == bootstrap_type) {
+
+                        return styles.flash_float;
+
+                    }
+
+                }
+            }
+        }
     }
 
 </script>
@@ -141,7 +157,7 @@
         z-index: 99999;
     }
 
-    .sy-vue-notify--success {
+   /* .sy-vue-notify--success {
         background: #68cd86;
         color: #ffffff;
     }
@@ -157,7 +173,7 @@
     .sy-vue-notify--danger {
         background: #e54d42;
         color: #ffffff;
-    }
+    }*/
 
     .fade-enter {
         opacity: 0;

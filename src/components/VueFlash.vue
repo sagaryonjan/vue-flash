@@ -3,24 +3,42 @@
        <div
        v-if="group == notify.group"
        v-for="(notify, index) in notifications"
+       :style="upDateStyle(notify.type)"
        class="sy-vue-notify--alert"
-       :class="classes +' sy-vue-notify--'+notify.type">
+       :class="classes">
            <a href="#"
               class="close"
               title="close"
               @click="remove(index)"
            >×</a>
-           <strong>{{ notify.type | capitalize }} !</strong>{{ notify.message }}
+
+           <strong v-if="title == true">{{ notify.type | capitalize }} !!</strong>
+           <strong v-if="typeof title === 'string'">{{ title | capitalize }}</strong>
+           {{ notify.message }}
        </div>
     </transition>
 </template>
 
 <script>
+    import defaults from '../defaults';
     import flashMixin  from  './flashMixin';
 
     export default {
         name: 'Flash',
-        mixins: [flashMixin]
+        mixins: [flashMixin],
+        methods: {
+            upDateStyle(type) {
+                for (const [bootstrap_type, styles] of Object.entries(defaults.type)) {
+
+                    if (type == bootstrap_type) {
+
+                        return styles.vue_flash;
+
+                    }
+
+                }
+            }
+        }
     }
 
 </script>
@@ -35,29 +53,7 @@
 
    }
 
-    .sy-vue-notify--success {
-        background-color: #dff0d8;
-        border-color: #d6e9c6;
-        color: #3c763d;
-    }
 
-    .sy-vue-notify--warning {
-        color: #8a6d3b;
-        background-color: #fcf8e3;
-        border-color: #faebcc;
-    }
-
-    .sy-vue-notify--info {
-        color: #31708f;
-        background-color: #d9edf7;
-        border-color: #bce8f1;
-    }
-
-    .sy-vue-notify--danger {
-        color: #a94442;
-        background-color: #f2dede;
-        border-color: #ebccd1;
-    }
 
     .fade-enter {
         opacity: 0;

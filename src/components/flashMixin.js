@@ -1,6 +1,6 @@
 import events   from '../events';
 import defaults from '../defaults';
-import {updatedArray, groupExitInArray} from '../util/index';
+import {updatedArray, groupExitInArray, isStr} from '../util/index';
 
 export default {
     data() {
@@ -24,7 +24,11 @@ export default {
         group: {
             type: String,
             default: defaults.notify_group
-        }
+        },
+        title: {
+            type: [String, Boolean],
+            default: defaults.props_default.title
+        },
     },
     filters: {
         capitalize: function (value) {

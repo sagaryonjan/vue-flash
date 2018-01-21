@@ -10,16 +10,17 @@
 
 <div id="app">
 
-    <flash-float
-
-
-            :animation="animation"
-            :area="area"></flash-float>
-
-    <!--:group="'float-notification'" :duration="duration"-->
     <!--<flash-float
+
+            :duration="duration"
             :animation="animation"
             :area="area"></flash-float>-->
+
+    <!--:group="'float-notification'" :duration="duration"-->
+    <flash-float
+            :title="'Hero !!'"
+            :animation="animation"
+            :area="area"></flash-float>
 
     <main role="main" class="container">
         <br/>
@@ -39,7 +40,11 @@
                 :animation="animation"
         ></flash>-->
 
-
+        <flash
+                :title="false"
+                :duration="duration"
+                :animation="animation"
+        ></flash>
         <div class="row">
 
             <div class="col-lg-2"></div>

@@ -5,7 +5,7 @@ Vue.use(VueFlash, {
     predefine_msg: {
         warner : {
             message: 'You Warner {data}',
-            type: 'warning'
+            type: ['warning', 'describe']
         },
         tackel : {
             message: 'You Warner {data}',
@@ -13,7 +13,19 @@ Vue.use(VueFlash, {
         }
     },
     type: {
-        describe : 'red'
+        describe : {
+            flash_float : {
+                color: '#ffffff',
+                background: 'yellow'
+            },
+
+            vue_flash : {
+                borderColor: '#bce8f1',
+                color: 'green',
+                backgroundColor: 'yellow'
+            }
+
+        }
     },
     props_default : {
         duration: 10000,
@@ -31,8 +43,8 @@ new Vue({
         select_area: 'top-right',
         animation: 'fade',
         select_animation: 'fade',
-        input_duration: 4000,
-        duration: 4000,
+        input_duration: 50000,
+        duration: 50000,
         component: 'float-notification',
         notification_type: 'success',
         message: 'User Get Successfully'
@@ -43,7 +55,7 @@ new Vue({
             this.animation = this.select_animation;
             this.duration  = this.input_duration;
 
-            this.$flash.warning().tackel({
+            this.$flash.describe().warner({
                 title: 'Manager'
             });
 
