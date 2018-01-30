@@ -1,7 +1,7 @@
 {
   "name": "vue2-flash",
   "description": "A Vue.js 2 Helpfull Notification.",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "dist/vue-flash.js",
   "author": "sagaryonjan",
   "private": false,

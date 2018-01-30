@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import VueFlash from '../src/index';
+import VueFlash from 'vue2-flash';
 
 Vue.use(VueFlash, {
     predefine_msg: {
